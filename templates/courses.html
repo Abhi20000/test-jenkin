@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          background-color: rgb(253, 244, 232);
+        }
+        
+        td, th {
+          border: 2px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        button {
+           font-family: tahoma;
+           margin-top: 20px;
+           margin-right: 20px;
+           position:absolute;
+           top:0;
+           right:0;
+          
+        }
+        div label {
+           color: red;
+           font: message-box;
+           font-weight: bold;
+          
+        }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+</head>
+<body>
+    <a href="{{ url_for('home') }}"> <button> Home </button></a>
+    <h1 align="center"> Cousrses Table </h1>
+
+    <div align="center">
+      {% with messages = get_flashed_messages() %}
+    
+      {% for message in messages %}
+        <label>  {{ message }} </label>
+      {% endfor %}
+    
+    {% endwith %}
+    </div><br><br>
+    <form method="POST">
+        <label for="co_id">COURSE_ID :-</label>
+        <input type="text" id="co_id" name="course_id" required><br><br>
+        <label for="co_name">COURSE_NAME :-</label>
+        <input type="text" id="co_name" name="course_name" required><br><br>
+        <label for="co_price">COURSE_PRICE :-</label>
+        <input type="number" id="co_price" name="course_price" required><br><br>
+        <input type="submit" value="Submit"> <br><br>
+    </form>
+
+    <table>
+        <tr>
+            <th> COURSE_ID  </th>
+            <th> COURSE_NAME  </th>
+            <th> COURSE_PRICE  </th>
+        </tr>
+     {% for row in co_d  %}
+      <tr>
+        <td> {{ row.0 }} </td>
+        <td> {{ row.1 }} </td>
+        <td> {{ row.2 }} </td>
+      </tr>
+     {% endfor %}
+    </table>
+    
+</body>
+</html>
