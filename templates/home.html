@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgba(23, 221, 135, 0.726);
+}
+body {
+  background-size: 100%;
+  background-image:url({{url_for('static', filename='tech.jpg')}});
+  
+}
+</style>
+</head>
+<body>
+<ul>
+  <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+  <li><a href="{{ url_for('customer') }}">Customer</a></li>
+  <li><a href="{{ url_for('courses') }}">Courses</a></li>
+  <li><a href="{{ url_for('sales') }}">Sales</a></li>
+  <li><a href="{{ url_for('report') }}">View Report</a></li>
+</ul>
+
+<h1 align="center"> BBI Insights Pvt Ltd..Abhi</h1>
+  
+</body>
+</html>
