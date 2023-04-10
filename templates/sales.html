@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          background-color: rgb(253, 244, 232);
+        }
+        
+        td, th {
+          border: 2px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+
+        button {
+           font-family: tahoma;
+           margin-top: 20px;
+           margin-right: 20px;
+           position:absolute;
+           top:0;
+           right:0;
+ }
+ div label {
+           color: red;
+           font: message-box;
+           font-weight: bold;
+          
+        }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales</title>
+</head>
+<body>
+    <a href="{{ url_for('home') }}"> <button> Home </button></a>
+    <h1 align="center"> Sales Table </h1>
+    <div align="center">
+      {% with messages = get_flashed_messages() %}
+    
+      {% for message in messages %}
+        <label>  {{ message }} </label>
+      {% endfor %}
+    
+    {% endwith %}
+    </div><br><br>
+    <form method="POST">
+        <label for="s_id">S_ID :-</label>
+        <input type="number" id="s_id" name="s_id" required><br><br>
+        <label for="s_custid">S_CUSIID :-</label>
+        <input type="number" id="s_custid" name="s_custid" required><br><br>
+        <label for="s_courseid">S_COURSEID :-</label>
+        <input type="number" id="s_courseid" name="s_courseid" required><br><br>
+        <label for="s_qty_order">S_QTY_ORDER :-</label>
+        <input type="number" id="s_qty_order" name="s_qty_order" required><br><br>
+        <input type="submit" value="Submit"><br><br>
+    </form>
+
+    <table>
+        <tr>
+            <th> S_ID  </th>
+            <th> S_CUSTID  </th>
+            <th> S_COURSEID  </th>
+            <th> S_QTY_ORDER  </th>
+        </tr>
+     {% for row in sa_d  %}
+      <tr>
+        <td> {{ row.0 }} </td>
+        <td> {{ row.1 }} </td>
+        <td> {{ row.2 }} </td>
+        <td> {{ row.3 }} </td>
+      </tr>
+     {% endfor %}
+    </table>
+
+
+</body>
+</html>
